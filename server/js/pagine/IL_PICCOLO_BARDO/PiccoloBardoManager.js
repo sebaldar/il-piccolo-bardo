@@ -64,7 +64,7 @@ class PiccoloBardoManager {
    * Crea il database storybook se non esiste
    */
   async createDatabase() {
-    const session = neo4jService.getSession('system');
+    const systemSession = neo4jService.getSession('system');
     try {
       // Verifica se il database esiste
       const result = await systemSession.run(

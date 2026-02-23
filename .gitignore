@@ -14,3 +14,5 @@ server/config.json
 documentazione/ 
 node_modules/
 www/public/
+
+data/

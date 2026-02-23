@@ -3,7 +3,7 @@ import fs from 'fs';
 import neo4j from 'neo4j-driver';
 import PiccoloBardoManager from './PiccoloBardoManager.js';
 
-async function exe(ws, message) {
+async function exe(server, ws, message) {
     try {
         const { action } = message;
         let response = null; // Inizializziamo response
@@ -13,7 +13,7 @@ async function exe(ws, message) {
 
         const manager = new PiccoloBardoManager(
             'neo4j',             // Database di default (Community Edition)
-            'bolt://localhost:7687',  // URI
+            'bolt://neo4j:7687',  // URI
             NEO4J_USER,
             NEO4J_PASSWORD
         );

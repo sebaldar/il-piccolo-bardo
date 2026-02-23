@@ -855,7 +855,7 @@
             updateStatus('connecting');
             
             // Fetch
-            const mesg = await fetch('https://www.ilpiccolobardo.it/api/session/test.js', {
+            const mesg = await fetch('/api/session/test.js', {
                 credentials: 'include', // OBBLIGATORIO
                 method: 'GET'
             });

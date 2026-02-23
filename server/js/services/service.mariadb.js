@@ -4,17 +4,22 @@ import mysql from 'mysql2/promise';
 class MySQL2Service {
   constructor(config = {}) {
     this.config = {
-      host: config.host || '127.0.0.1',
-      port: config.port || 3306,
-      user: config.user || process.env.USER_USER,
-      password: config.password || process.env.USER_PASS,
-      database: config.database || process.env.USER_DB,
-      waitForConnections: true,
-      connectionLimit: config.connectionLimit || 10,
-      queueLimit: 0,
-      enableKeepAlive: true,
-      keepAliveInitialDelay: 0,
-      ...config
+		host: process.env.DB_HOST || 'bardo-mariadb',
+		  port: process.env.DB_PORT || 3306,
+		  user: process.env.DB_ROOT_USER,
+		  password: process.env.DB_ROOT_PASSWORD,
+		  database: process.env.DB_NAME,
+		  
+		  waitForConnections: true,
+		  connectionLimit: 10,
+		  queueLimit: 0,
+		  waitForConnections: true,
+		  connectionLimit: config.connectionLimit || 10,
+		  queueLimit: 0,
+		  enableKeepAlive: true,
+		  keepAliveInitialDelay: 0,
+		  
+		  ...config
     };
 
     this.pool = null;

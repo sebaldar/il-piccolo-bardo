@@ -20,9 +20,19 @@ class HTTP {
             return mod.default || mod; // supporta sia export default che named
         };
 
-        const pagina = "";
-        switch (pagina) {
-
+        const doc = jdata.doc;
+        switch (doc) {
+			case "session" :
+				this.jdata.response.statusCode = 200;
+				this.jdata.response.setHeader("Content-Type", `text/json`);	
+				this.jdata.response.end( JSON.stringify( {'session' : jdata.SESSION } ))
+			break;
+			default:
+				this.jdata.response.statusCode = 200;
+				this.jdata.response.setHeader("Content-Type", `text/html`);	
+				this.jdata.response.end("Nessuna richiesta gestita!")
+			break;
+			
 
         }
     }
@@ -31,8 +41,8 @@ class HTTP {
 
 // Esportazione del modulo principale
 export default {
-    exe( jdata ) {
+    async exe( jdata ) {
         const h = new HTTP(jdata);
-        h.executeRequest();
+        await h.executeRequest();
     }
 };
